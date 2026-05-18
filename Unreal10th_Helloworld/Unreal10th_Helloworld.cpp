@@ -12,7 +12,7 @@ int main()
     //std::cin >> number; // C++ 스타일의 표준 입력 방식
     //printf("Input number is %d", number);
 
-    printf("Hello Hello Conflict Test\n");
+    printf("안녕 안녕 컴플릭트\n");
     printf("나이를 입력하세요 : ");
     int Age = 0;    // Age라는 int 변수를 선언했다.
     std::cin >> Age;
