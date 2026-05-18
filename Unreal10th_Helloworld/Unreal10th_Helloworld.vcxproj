@@ -126,6 +126,7 @@
     <ClCompile Include="Unreal10th_Helloworld.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Day0515.h" />
     <ClInclude Include="Day0518.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
