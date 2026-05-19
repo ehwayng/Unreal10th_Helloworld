@@ -1,4 +1,4 @@
-﻿// Unreal10th_Helloworld.cpp : 이 파일에는 'main' 함수가 포함됩니다. 거기서 프로그램 실행이 시작되고 종료됩니다.
+// Unreal10th_Helloworld.cpp : 이 파일에는 'main' 함수가 포함됩니다. 거기서 프로그램 실행이 시작되고 종료됩니다.
 //
 
 #include <iostream>
@@ -6,175 +6,158 @@ using namespace std;
 
 int main()
 {
-    printf("1. 온도 변환기\n");
-    int Number = 0;	// 현재온도(섭씨)
-    printf("현재 온도(섭씨)를 입력하세요 : ", Number);
-    cin >> Number;
-    int Temp1 = 9;
-    int Temp2 = 5;
-    int Temp3 = 32;
-    Number *= Temp1;
-    Number /= Temp2;
-    Number += Temp3;
-    printf("화씨 : %d도\n", Number);
-    printf("\n");
+	// 1. 세 수 중 최댓값과 최솟값 찾기
+	//		- 3개의 정수를 입력받아, 그중 가장 큰 수와 가장 작은 수를 출력
+	// 2. 세 개의 선분 길이를 입력받아, 이 선분들로 삼각형을 만들 수 있는지 판별하기
+	//		- 조건 : 삼각형이 되려면 '가장 긴 변의 길이 < 나머지 두 변의 길이의 합'이어야 함.
+	// 3. 미니 계산기
+	//		- 두 개의 정수와 하나의 연산자(+, -, *, / )를 입력받아 결과를 출력
+	//		- 단, 나눗셈에서 0으로 나누려고 하면 "0으로 나눌 수 없습니다"라는 에러 메시지를 출력
+	// 4. 윤년 판별기
+	//		- 연도(예 : 2024)를 입력받아 그 해가 윤년인지 평년인지 출력
+	//		- 윤년의 조건 :
+	//			연도가 4로 나누어 떨어지면 윤년이다.
+	//			하지만 100으로 나누어 떨어지면 평년이다.
+	//			그럼에도 400으로 나누어 떨어지면 윤년이다.
 
-    printf("2. 시간 계산기\n");
-    Number = 0; //초시간
-    printf("변환할 시간을 입력하세요 : ", Number);
-    cin >> Number;
-    int Time1 = Number / 3600;
-    int Time2 = Number % 3600 / 60;
-    int Time3 = Number % 3600 % 60;
-    printf("변환 완료 : %d시간 %d분 %d초\n", Time1, Time2, Time3);
-    printf("\n");
+	printf("1. 최댓값/최솟값 찾기\n");
+	int num1 = 0, num2 = 0, num3 = 0;
+	printf("세 가지 숫자를 입력하세요 : ");
+	cin >> num1 >> num2 >> num3;
+	if (num1 >= num2 && num1 >= num3)
+	{
+		printf("최댓값은 [%d] 입니다.\n", num1);
+		if (num2 < num3)
+		{
+			printf("최솟값은 [%d] 입니다.\n", num2);
+		}
+		else
+		{
+			printf("최솟값은 [%d] 입니다.\n", num3);
+		}
+	}
+	else if (num2 >= num1 && num2 >= num3)
+	{
+		printf("최댓값은 [%d] 입니다.\n", num2);
+		if (num1 < num3)
+		{
+			printf("최솟값은 [%d] 입니다.\n", num1);
+		}
+		else
+		{
+			printf("최솟값은 [%d] 입니다.\n", num3);
+		}
+	}
+	else if (num3 >= num1 && num3 >= num2)
+	{
+		printf("최댓값은 [%d] 입니다.\n", num3);
+		if (num1 < num2)
+		{
+			printf("최솟값은 [%d] 입니다.\n", num1);
+		}
+		else
+		{
+			printf("최솟값은 [%d] 입니다.\n", num2);
+		}
+	}
+	
+	printf("\n\n");
 
-    printf("3. 동전 갯수 계산\n");
-    Number = 0; //총금액
-    printf("금액 입력 : ", Number);
-    cin >> Number;
-    int mon1 = Number / 500;
-    int mon2 = Number % 500 / 100;
-    int mon3 = Number % 500 % 100 / 50;
-    int mon4 = Number % 500 % 100 % 50 / 10;
-    printf("결과 : 500원 %d개, 100원 %d개, 50원 %d개, 10원 %d개\n", mon1, mon2, mon3, mon4);
-    printf("\n");
+	printf("2. 삼각형 조건 판별\n");
+	int line1 = 0, line2 = 0, line3 = 0;
+	printf("세 개의 선분 길이를 입력하세요(cm) : ");
+	cin >> line1 >> line2 >> line3;
+	if (line1 >= line2 && line1 >= line3)
+	{
+		if (line1 < line2 + line3)
+		{
+			printf("이 선분들로 삼각형을 만들 수 있습니다.\n");
+		}
+		else
+		{
+			printf("이 선분들로는 삼각형을 만들 수 없습니다.\n");
+		}
+	}
+	else if (line2 >= 1 && line2 >= line3)
+	{
+		if (line2 < line1 + line3)
+		{
+			printf("이 선분들로 삼각형을 만들 수 있습니다.\n");
+		}
+		else
+		{
+			printf("이 선분들로는 삼각형을 만들 수 없습니다.\n");
+		}
+	}
+	else if (line3 >= line1 && line3 >= line2)
+	{
+		if (line3 < line1 + line2)
+		{
+			printf("이 선분들로 삼각형을 만들 수 있습니다.\n");
+		}
+		else
+		{
+			printf("이 선분들로는 삼각형을 만들 수 없습니다.\n");
+		}
+	}
 
-    printf("4. 자리수 분리\n");
-    Number = 0;   //입력 숫자
-    printf("입력 숫자(세자리) : ", Number);
-    cin >> Number;
-    int hun = Number / 100;
-    int ten = (Number - 100 * hun) / 10;
-    int one = (Number - 100 * hun - 10 * ten);
-    printf("100의 자리 : %d, 10의 자리 : %d, 1의 자리 : %d\n", hun, ten, one);
-    int sum = hun + ten + one;
-    printf("각 자리수의 합 : %d\n", sum);
-    printf("\n");
+	printf("\n\n");
 
-    printf("5. 파일 용량 환산기\n");
-    Number = 0;    //메가바이트
-    printf("변환하기(MB) : ", Number);
-    cin >> Number;
-    int kb = Number * 1024;
-    int byte = Number * 1024 * 1024;
-    printf("결과 : %d KB / %d Byte\n", kb, byte);
-    printf("\n");
+	printf("3. 미니계산기\n");
+	float numA = 0.0f, numB = 0.0f;
+	char oper = 'a';
+	printf("두 개의 정수를 입력하세요 : ");
+	cin >> numA >> numB;
+	printf("+, - , * , / 중 사용할 연산자를 입력하세요 : ");
+	cin >> oper;
+	if (numB == 0)
+	{
+		printf("0으로 나눌 수 없습니다.\n");
+	}
+	else
+	{
+		printf("%.0f %c %.0f\n", numA, oper, numB);
+		if (oper == '+')
+		{
+			printf("연산의 결과값은 [%.0f] 입니다.\n", numA + numB);
+		}
+		else if (oper == '-')
+		{
+			printf("연산의 결과값은 [%.0f] 입니다.\n", numA - numB);
+		}
+		else if (oper == '*')
+		{
+			printf("연산의 결과값은 [%.0f] 입니다.\n", numA * numB);
+		}
+		else if (oper == '/')
+		{
+			float div = numA / numB;
+			printf("연산의 결과값은 [%.2f] 입니다.\n", div);
+		}
+	}
 
-    printf("6. 타일 개수 계산기\n");
-    int wid = 0; int hei = 0;
-    int tile = 30;
-    printf("방의 가로, 세로 길이를 순서대로 입력하세요(cm) : ");
-    cin >> wid >> hei;
-    int widCount = (wid + (tile - 1)) / tile;
-    int heiCount = (hei + (tile - 1)) / tile;
-    printf("방을 채우기 위해 필요한 타일 : %d개\n", widCount * heiCount);
+	printf("\n\n");
 
-    printf("----------------------------------------");
+	printf("3. 윤년 판별기\n");
+	int year = 0;
+	printf("윤년인지 판별할 연도를 입력하세요 : ");
+	cin >> year;
+	int yearF = year % 4;
+	int yearH = year % 100;
+	int year4H = year % 400;
+	if ((yearF == 0 && yearH != 0) || year4H == 0)
+	{
+		printf("%d년은 윤년입니다.\n", year);
+	}
+	else
+	{
+		printf("%d년은 평년입니다.\n", year);
+	}
 
-    printf("\n\n\n");
-    printf("<나의 저축 도우미!>\n");
-    int money = 0;
-    printf("목표 금액 : ");
-    cin >> money;
-    int per = 0;
-    printf("목표 기간 : ");
-    cin >> per;
-    printf("\n계산중.........\n\n");
-    int day = money / (per * 365);
-    int ek = money / 100000000;
-    printf("축하합니다!\n당신은 하루에 %d원씩만 세이브한다면,\n%d년 뒤에 %d억 자산가가 될 수 있습니다!\n", day, per, ek);
-
-
-    
-
-
-    
-
-
-
-
-
-
-
-
-
-    //int Number = 10;    // 대입 연산자로 Number에 10을 넣었다.
-    //printf("Number : %d\n", Number);
-    //printf("Number : %5d\n", Number);   // Number를 정수 5자리로 출력하라
-    //Number = 20;        // 대입 연산자로 Number에 20을 넣었다. (덮어써짐)
-    //printf("Number : %d\n", Number);
-    //Number = 5 + 10;    // 산술 연산자 +를 이용해서 5와 10을 더 하고 그 결과를 Number에 대입한다. (순서 : 오른쪽 항부터)
-    //printf("Number : %d\n", Number);
-    //Number = 7 % 3;      // 산술 연산자 %를 이용해서 7을 3으로 나눈 나머지를 구하고(1), 그 결과를 Number에 대입한다.
-    //printf("Number : %d\n", Number);
-
-    //int Temp1 = 7;
-
-    //Number += Temp1;    // Number와 Temp1의 값을 더하고 그 결과를 Number에 덮어쓴다. (Number = 8)
-    //printf("Number : %d\n", Number);
-    //Number *= Temp1;    // Number와 Temp1의 값을 곱하고 그 결과를 Number에 덮어쓴다. (Number = 56)
-    //printf("Number : %d\n", Number);
-
-    //Number--;   // (Number = 55)
-    //Number--;   // (Number = 54)
-    //Number--;   // (Number = 53)
-    //printf("Number : %d\n", Number);
+	printf("\n\n\n\n");
 }
 
 
-
-
-
-    //printf("Hello World!\n");
-    //int number = 0;
-    ////int size = scanf("%d",&number);   // C 스타일의 표준 입력 방식 (위험하다)
-    //std::cin >> number; // C++ 스타일의 표준 입력 방식
-    //printf("Input number is %d", number);
-
-    //printf("안녕 안녕 컴플릭트\n");
-    //printf("나이를 입력하세요 : ");
-    //int Age = 0;    // Age라는 int 변수를 선언했다.
-    //std::cin >> Age;
-    //printf("당신의 나이는 [%d]살입니다.\n",Age);
-
-    //  변수(Variable)
-    //  - 변하는 숫자
-    //  - 컴퓨터에 값을 기억시키기 위해 만들고 사용
-    //  - 메모리의 일정 공간을 확보하고 이름을 붙여 사용하는 것
-    //      ex) 데이터타입 변수명; int age;
-
-    //  int(인티저, Integer)
-    //  - 정수형 타입 (*정수: 소수점이 없는 숫자)
-    //  - 일반적으로 32bit의 크기를 가진다. (범위 약 -21억 ~ 21억)
-
-    //  변수 네이밍 규약(중요!)
-    //  - 알아보기 쉽고, 간결해야 한다. (길어지더라도 알아보기 좋은 것 권장)
-    //  - 수업 중에는 언리얼 코딩 규약을 따를 것 (파스칼 케이스 기반 + 약간의 변형)
-    //  - 문법적 금지
-    //      *예약어(컴파일러가 미리 사용하려고 잡아 놓은 이름     ex) int float
-    //      *숫자로 시작하기
-    //      *대부분의 특수문자(언더바_는 가능. 하지만 비권장)
-    //      *띄어쓰기
-    //  - 비권장
-    //      *영어가 아닌 문자
-    //      *알파벳은 같지만 대소문자가 다른 두 변수
-
-    //  연산자(Operator)
-    //  - 산술 연산자 : + - * / %(나머지)
-    //      > 사칙연산처럼 숫자끼리 더하거나 빼거나 하는 것들
-    //  - 대입 연산자 : =
-    //      > '='의 오른쪽에 있는 값을 '=' 왼쪽에 있는 변수에 넣어라
-    //      ex) int i = 20; > i라는 변수에 20이라는 값을 넣으라는 의미
-    // 
-    //  - 복합 대입 연산자
-    //      > 줄여 쓰기용. 대입 연산자와 다른 연산자를 합쳐서 복합적으로 사용하는 연산자.
-    //      ex) int a, int b;
-    //          a = a + b; >> a += b;       // 둘 다 같은 코드
-    //  - 증감 연산자
-    //      > 줄여 쓰기용. 정수에 1을 더하거나 뺄 때 사용하는 연산자.
-    //      ex) a = a + 1; >> a++;      // 둘 다 같은 코드  
-    //          b = b - 1; >> b--;
 
 
 
