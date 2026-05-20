@@ -18,7 +18,7 @@ int main()
 	int botDice;
 	int playerDice;
 
-	while ((botMoney > 0) && (playerMoney > 0))
+	while ((botMoney != 0) && (playerMoney != 0))
 	{
 		printf("1차 주사위를 던집니다.\n");
 		botDice = rand() % 6 + 1;
