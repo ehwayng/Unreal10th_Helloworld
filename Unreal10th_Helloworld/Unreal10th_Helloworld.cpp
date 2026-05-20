@@ -2,149 +2,155 @@
 //
 
 #include <iostream>
+#include <time.h>
+//#include <random> - C++용 랜덤...
+
 using namespace std;
 
 int main()
 {
-	// 1. 세 수 중 최댓값과 최솟값 찾기
-	//		- 3개의 정수를 입력받아, 그중 가장 큰 수와 가장 작은 수를 출력
-	// 2. 세 개의 선분 길이를 입력받아, 이 선분들로 삼각형을 만들 수 있는지 판별하기
-	//		- 조건 : 삼각형이 되려면 '한 변의 길이 < 나머지 두 변의 길이의 합'이어야 함.
-	// 3. 미니 계산기
-	//		- 두 개의 정수와 하나의 연산자(+, -, *, / )를 입력받아 결과를 출력
-	//		- 단, 나눗셈에서 0으로 나누려고 하면 "0으로 나눌 수 없습니다"라는 에러 메시지를 출력
-	// 4. 윤년 판별기
-	//		- 연도(예 : 2024)를 입력받아 그 해가 윤년인지 평년인지 출력
-	//		- 윤년의 조건 :
-	//			연도가 4로 나누어 떨어지면 윤년이다.
-	//			하지만 100으로 나누어 떨어지면 평년이다.
-	//			그럼에도 400으로 나누어 떨어지면 윤년이다.
-
-	printf("1. 최댓값/최솟값 찾기\n");
-	int num1 = 0, num2 = 0, num3 = 0;
-	printf("세 가지 숫자를 입력하세요 : ");
-	cin >> num1 >> num2 >> num3;
-	if (num1 >= num2 && num1 >= num3)
-	{
-		printf("최댓값은 [%d] 입니다.\n", num1);
-		if (num2 < num3)
-		{
-			printf("최솟값은 [%d] 입니다.\n", num2);
-		}
-		else
-		{
-			printf("최솟값은 [%d] 입니다.\n", num3);
-		}
-	}
-	else if (num2 >= num1 && num2 >= num3)
-	{
-		printf("최댓값은 [%d] 입니다.\n", num2);
-		if (num1 < num3)
-		{
-			printf("최솟값은 [%d] 입니다.\n", num1);
-		}
-		else
-		{
-			printf("최솟값은 [%d] 입니다.\n", num3);
-		}
-	}
-	else if (num3 >= num1 && num3 >= num2)
-	{
-		printf("최댓값은 [%d] 입니다.\n", num3);
-		if (num1 < num2)
-		{
-			printf("최솟값은 [%d] 입니다.\n", num1);
-		}
-		else
-		{
-			printf("최솟값은 [%d] 입니다.\n", num2);
-		}
-	}
+	// 간단실습
 	
-	printf("\n\n");
+	// 1. 가위바위보 게임 - 3선승제 / enum 활용
+	printf("<가위바위보 게임>\n");
 
-	printf("2. 삼각형 조건 판별\n");
-	int line1 = 0, line2 = 0, line3 = 0;
-	printf("세 개의 선분 길이를 입력하세요(cm) : ");
-	cin >> line1 >> line2 >> line3;
-	if (line1 + line2 > line3 && line1 + line3 > line2 && line2 + line3 > line1)
-	{
-			printf("이 선분들로 삼각형을 만들 수 있습니다.\n");
-	}
-	else
-	{
-		printf("이 선분들로는 삼각형을 만들 수 없습니다.\n");
-	} 
+	srand(time(0));
+	int botRPS;
+	int playerRPS = 0;
+	int result = 0;	// 0=비김 1=플레이어승 2=컴퓨터승
 
-	printf("\n\n");
-
-	printf("3. 미니계산기\n");
-	int numA = 0, numB = 0;
-	char oper = 0;
-	float Result = 0.0f;
-	printf("두 개의 정수를 입력하세요 : ");
-	cin >> numA >> numB;
-	printf("+, - , * , / 중 사용할 연산자를 입력하세요 : ");
-	cin >> oper;
-	switch (oper)
+	enum RPS
 	{
-	case '+':
-		Result = numA + numB;
-		break;
-	case '-':
-		Result = numA - numB;
-		break;
-	case '*':
-		Result = numA * numB;
-		break;
-	case '/':
-		if (numB != 0)
+		Scissors = 1,
+		Rock,
+		Paper
+	};
+
+	while (result != 0)
+	{
+		printf("[1] 가위  [2] 바위  [3] 보\n무엇을 낼지 숫자로 입력하세요 : ");
+		cin >> playerRPS;
+		botRPS = rand() % 3 + 1;
+		if (botRPS = playerRPS)
 		{
-			Result = numA / numB;
+			if (botRPS == 1)
+			{
+			printf("Bot : 가위 / Player : 가위\n");
+			}
+			else if (botRPS == 2)
+			{
+			printf("Bot : 바위 / Player : 바위\n");
+			}
+			else
+			{
+			printf("Bot : 보 / Player : 보\n");
+			}
+		result = 0;
+		printf("비겼습니다!\n\n");
+		}
+		else if (botRPS == 1)
+		{
+			if (playerRPS == 2)
+			{
+				printf("Bot : 가위 / Player : 바위\n");
+				result = 1;
+				printf("승리했습니다!^^\n\n");
+			}
+			else
+			{
+				printf("Bot : 가위 / Player : 보\n");
+				result = 2;
+				printf("패배했습니다!ㅠㅠ\n\n");
+			}
+		}
+		else if (botRPS == 2)
+		{
+			if (playerRPS == 1)
+			{
+				printf("Bot : 바위 / Player : 가위\n");
+				result = 2;
+				printf("패배했습니다!ㅠㅠ\n\n");
+			}
+			else
+			{
+				printf("Bot : 바위 / Player : 보\n");
+				result = 1;
+				printf("승리했습니다!^^\n\n");
+			}
 		}
 		else
 		{
-			printf("0으로 나눌 수 없습니다.\n");
+			if (playerRPS == 1)
+			{
+				printf("Bot : 보 / Player : 가위\n\n");
+				result = 1;
+				printf("승리했습니다!^^\n\n");
+			}
+			else
+			{
+				printf("Bot : 보 / Player : 바위\n\n");
+				result = 2;
+				printf("패배했습니다!ㅠㅠ\n\n");
+			}
+
 		}
-		break;
-	default:
-		break;
-	}
-	if (oper != '/')
-	{
-		printf("%d %c %d\n", numA, oper, numB);
-		printf("연산의 결과값은 [%.2f] 입니다.\n", Result);
-	}
-	else
-	{
-		if (numB != 0)
-		{
-			printf("%d %c %d\n", numA, oper, numB);
-			printf("연산의 결과값은 [%.2f] 입니다.\n", Result);
-		}
-	}
-	
 
-	printf("\n\n");
-
-	printf("4. 윤년 판별기\n");
-	int year = 0;
-	printf("윤년인지 판별할 연도를 입력하세요 : ");
-	cin >> year;
-	int yearF = year % 4;
-	int yearH = year % 100;
-	int year4H = year % 400;
-	bool bLeap = ((yearF == 0 && yearH != 0) || year4H == 0);
-	if (bLeap)
-	{
-		printf("%d년은 윤년입니다.\n", year);
-	}
-	else
-	{
-		printf("%d년은 평년입니다.\n", year);
 	}
 
-	printf("\n\n\n\n");
+	//실습과제
+
+	printf("1. 캐릭터 상태 변환 구현\n");
+
+	enum condition
+	{
+		Jump,
+		Attack,
+		Standby,
+		Invincible
+	};
+
+	int playerCondition = Standby;
+	printf("현재 플레이어는 [%s] 상태입니다.\n", playerCondition);
+
+
+
+
+	//// 랜덤
+	//srand(time(0));		// !랜덤의 시드값을 현재 시간으로 설정하기! (프로그램 실행할 때 한번만 하면 됨)
+
+	//int RandomNumber;
+	//int TestCount = 10000000;
+	//int num1 = 0, num2 = 0, num3 = 0, num4 = 0, num5 = 0, num6 = 0;
+	//for (int i = 0; i < TestCount; i++)
+	//{
+	//	RandomNumber = rand() % 6 + 1;	// 1~6이 랜덤으로 골라지게 됨	// rand() - 0에서 RandMax 사이에서 랜덤하게 나옴
+	//	//printf("Random : %d\n", RandomNumber);
+	//	switch (RandomNumber)
+	//	{
+	//	case 1 :
+	//		num1++;
+	//		break;
+	//	case 2 :
+	//		num2++;
+	//		break;
+	//	case 3 :
+	//		num3++;
+	//		break;
+	//	case 4 :
+	//		num4++;
+	//		break;
+	//	case 5 :
+	//		num5++;
+	//		break;
+	//	case 6 :
+	//		num6++;
+	//		break;
+	//	default :
+	//		printf("ERROR!! ERROR!! ERROR!!\n");
+	//		break;
+	//	}
+	//}
+	//printf("num1: [%d]\tnum2: [%d]\tnum3: [%d]\tnum4: [%d]\tnum5: [%d]\tnum6: [%d]", num1, num2, num3, num4, num5, num6);
 }
 
 
