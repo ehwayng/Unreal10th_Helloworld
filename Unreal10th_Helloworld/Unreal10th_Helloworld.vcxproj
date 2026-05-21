@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -123,13 +123,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="0521Practice_1.cpp" />
+    <ClCompile Include="0521Practice_2.cpp" />
+    <ClCompile Include="Day0521_2.cpp" />
     <ClCompile Include="Unreal10th_Helloworld.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="0521Practice_1.h" />
+    <ClInclude Include="0521Practice_2.h" />
     <ClInclude Include="Day0515.h" />
     <ClInclude Include="Day0518.h" />
     <ClInclude Include="Day0519.h" />
     <ClInclude Include="Day0520.h" />
+    <ClInclude Include="Day0521_2.h" />
+    <ClInclude Include="Day0521.h" />
+    <ClInclude Include="Day0520_TaskLearning.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

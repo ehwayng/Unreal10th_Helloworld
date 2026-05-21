@@ -348,3 +348,92 @@ cin >> Select;
 		}
 	}
 	printf("num1: [%d]\tnum2: [%d]\tnum3: [%d]\tnum4: [%d]\tnum5: [%d]\tnum6: [%d]", num1, num2, num3, num4, num5, num6);
+
+
+	//// 간단실습
+	//
+	//// 1. 가위바위보 게임 - 3선승제 / enum 활용
+	//printf("<가위바위보 게임>\n");
+
+	//srand(time(0));
+	//int botRPS;
+	//int playerRPS = 0;
+	//int result = 0;	// 0=비김 1=플레이어승 2=컴퓨터승
+
+	//enum RPS
+	//{
+	//	Scissors = 1,
+	//	Rock,
+	//	Paper
+	//};
+
+	//while (result != 0)
+	//{
+	//	printf("[1] 가위  [2] 바위  [3] 보\n무엇을 낼지 숫자로 입력하세요 : ");
+	//	cin >> playerRPS;
+	//	botRPS = rand() % 3 + 1;
+	//	if (botRPS = playerRPS)
+	//	{
+	//		if (botRPS == 1)
+	//		{
+	//		printf("Bot : 가위 / Player : 가위\n");
+	//		}
+	//		else if (botRPS == 2)
+	//		{
+	//		printf("Bot : 바위 / Player : 바위\n");
+	//		}
+	//		else
+	//		{
+	//		printf("Bot : 보 / Player : 보\n");
+	//		}
+	//	result = 0;
+	//	printf("비겼습니다!\n\n");
+	//	}
+	//	else if (botRPS == 1)
+	//	{
+	//		if (playerRPS == 2)
+	//		{
+	//			printf("Bot : 가위 / Player : 바위\n");
+	//			result = 1;
+	//			printf("승리했습니다!^^\n\n");
+	//		}
+	//		else
+	//		{
+	//			printf("Bot : 가위 / Player : 보\n");
+	//			result = 2;
+	//			printf("패배했습니다!ㅠㅠ\n\n");
+	//		}
+	//	}
+	//	else if (botRPS == 2)
+	//	{
+	//		if (playerRPS == 1)
+	//		{
+	//			printf("Bot : 바위 / Player : 가위\n");
+	//			result = 2;
+	//			printf("패배했습니다!ㅠㅠ\n\n");
+	//		}
+	//		else
+	//		{
+	//			printf("Bot : 바위 / Player : 보\n");
+	//			result = 1;
+	//			printf("승리했습니다!^^\n\n");
+	//		}
+	//	}
+	//	else
+	//	{
+	//		if (playerRPS == 1)
+	//		{
+	//			printf("Bot : 보 / Player : 가위\n\n");
+	//			result = 1;
+	//			printf("승리했습니다!^^\n\n");
+	//		}
+	//		else
+	//		{
+	//			printf("Bot : 보 / Player : 바위\n\n");
+	//			result = 2;
+	//			printf("패배했습니다!ㅠㅠ\n\n");
+	//		}
+
+	//	}
+
+	//}
