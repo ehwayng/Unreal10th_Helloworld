@@ -6,49 +6,36 @@
 #include "Day0521_2.h"		//	""는 직접 만든 헤더 파일
 #include "0521Practice_1.h"
 #include "0521Practice_2.h"
-
+#include "Day0522.h"
 
 using namespace std;
 
 int main()
 {
-	// 함수로 구현하기
+	unsigned int Seed = (unsigned int)time(0);
+	Seed = 0;		// 테스트용으로 임시 설정
+	srand(Seed);	//시드값 초기화
+
+	//Day0522_Array();
+
+	//Day0522_Array_Example01();
+	//Day0522_Array_Example02();
+	//Day0522_Array_Example03();
+	//printf("\n");
+	//Day0522_Shuffle();
+
 	
-	// 1. 캐릭터 상태 변화 
-	printf("1. 캐릭터 상태 변화\n");
-	int State = None;
-	
-	State = AddState(State, Wait);
-	Condition(State);
-
-	State = AddState(State, Jump);
-	Condition(State);
-
-	State = AddState(State, Attack);
-	Condition(State);
-
-	State = SubState(State, Wait);
-	Condition(State);
-
-	State = AddState(State, Invincible);
-	Condition(State);
-
-	State = Toggle(State, Invincible);
-	Condition(State);
-
-	 
-	printf("\n\n");
-	// 2. 주사위 게임
-	printf("2. 주사위 게임\n");
-	int Turn = 1;
-	int BotMoney = 10000;
-	int PlayerMoney = 10000;
-	PrintCurrentState(Turn, BotMoney, PlayerMoney);
+	Day0522_Practice1();
+	printf("\n");
+	Day0522_Practice2();
+	printf("\n");
+	Day0522_Practice3();
+	printf("\n");
+	Day0522_Practice4();
 
 
 
-	// 3. 홀짝 게임
-	printf("3. 홀짝 게임\n");
+
 }
 
 

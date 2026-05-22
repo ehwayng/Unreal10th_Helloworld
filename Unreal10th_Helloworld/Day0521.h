@@ -49,6 +49,59 @@ int main()
 	string str1 = "Hello ";
 	string str2 = "World!";
 	string str3 = Add(str1, str2);
+
+// 실습 출력용
+
+#include <iostream>
+#include <time.h>			//	<>는 C++에 기본적으로 내장되어있는 헤더 파일
+#include "Day0521_2.h"		//	""는 직접 만든 헤더 파일
+#include "0521Practice_1.h"
+#include "0521Practice_2.h"
+
+
+	using namespace std;
+
+	int main()
+	{
+		// 함수로 구현하기
+
+		// 1. 캐릭터 상태 변화 
+		printf("1. 캐릭터 상태 변화\n");
+		int State = None;
+
+		State = AddState(State, Wait);
+		Condition(State);
+
+		State = AddState(State, Jump);
+		Condition(State);
+
+		State = AddState(State, Attack);
+		Condition(State);
+
+		State = SubState(State, Wait);
+		Condition(State);
+
+		State = AddState(State, Invincible);
+		Condition(State);
+
+		State = Toggle(State, Invincible);
+		Condition(State);
+
+
+		printf("\n\n");
+		// 2. 주사위 게임
+		printf("2. 주사위 게임\n");
+		int Turn = 1;
+		int BotMoney = 10000;
+		int PlayerMoney = 10000;
+		PrintCurrentState(Turn, BotMoney, PlayerMoney);
+
+
+
+		// 3. 홀짝 게임
+		printf("3. 홀짝 게임\n");
+	}
+
 }
 
 

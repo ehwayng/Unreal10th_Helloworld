@@ -20,7 +20,7 @@ int GetMaxBet(int BotMoney, int PlayerMoney)
 
 int InputPlayerBet(int MaxBet)
 {
-	
+	return 0;
 }
 
 int ReceiveBotBet(int MaxBet)
