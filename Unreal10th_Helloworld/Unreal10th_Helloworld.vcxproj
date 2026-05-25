@@ -123,23 +123,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="0521Practice_1.cpp" />
-    <ClCompile Include="0521Practice_2.cpp" />
-    <ClCompile Include="Day0521_2.cpp" />
-    <ClCompile Include="Day0522.cpp" />
+    <ClCompile Include="0524_Homework.cpp" />
     <ClCompile Include="Unreal10th_Helloworld.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="0521Practice_1.h" />
-    <ClInclude Include="0521Practice_2.h" />
-    <ClInclude Include="Day0515.h" />
-    <ClInclude Include="Day0518.h" />
-    <ClInclude Include="Day0519.h" />
-    <ClInclude Include="Day0520.h" />
-    <ClInclude Include="Day0521_2.h" />
-    <ClInclude Include="Day0521.h" />
-    <ClInclude Include="Day0520_TaskLearning.h" />
-    <ClInclude Include="Day0522.h" />
+    <ClInclude Include="0524_Homework.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

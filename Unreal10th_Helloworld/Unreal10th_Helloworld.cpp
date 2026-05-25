@@ -2,37 +2,29 @@
 //
 
 #include <iostream>
-#include <time.h>			//	<>는 C++에 기본적으로 내장되어있는 헤더 파일
-#include "Day0521_2.h"		//	""는 직접 만든 헤더 파일
-#include "0521Practice_1.h"
-#include "0521Practice_2.h"
-#include "Day0522.h"
+#include <time.h>
+//#include "Day0521_2.h"
+//#include "0521Practice_1.h"
+//#include "0521Practice_2.h"
+//#include "Day0522.h"
+#include "0524_Homework.h"
 
 using namespace std;
 
 int main()
 {
 	unsigned int Seed = (unsigned int)time(0);
-	Seed = 0;		// 테스트용으로 임시 설정
-	srand(Seed);	//시드값 초기화
+	Seed = 0;
+	srand(Seed);
 
-	//Day0522_Array();
-
-	//Day0522_Array_Example01();
-	//Day0522_Array_Example02();
-	//Day0522_Array_Example03();
+	//Homework02_Run();
 	//printf("\n");
-	//Day0522_Shuffle();
-
-	
-	Day0522_Practice1();
+	//Homework03_Run();
+	//printf("\n");
+	//Homework04_Run();
+	//printf("\n");
+	Homework05_Run();
 	printf("\n");
-	Day0522_Practice2();
-	printf("\n");
-	Day0522_Practice3();
-	printf("\n");
-	Day0522_Practice4();
-
 
 
 
