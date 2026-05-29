@@ -8,6 +8,7 @@
 #include "Day0527.h"
 #include "Utils.h"
 #include "Day0528.h"
+#include "Day0529.h"
 
 using namespace std;
 
@@ -17,16 +18,7 @@ int main()
 	Seed = 0;
 	srand(Seed);
 
-	//Homework02_Run();
-	//printf("\n");
-	//Homework03_Run();
-	//printf("\n");
-	//Homework04_Run();
-	//printf("\n");
-	//Homework05_Run();
-	//printf("\n");
-
-	Day0528();
+	Day0529();
 }
 
 

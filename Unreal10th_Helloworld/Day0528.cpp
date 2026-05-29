@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <string>
 #include <string.h>
 #include "Day0528.h"
 
@@ -48,8 +49,8 @@ void Day0528_String()
 
 	// 문자열 길이 확인
 	string Str5 = "Hello\n";
-	Str4.length();		// 같은 기능
-	Str4.size();
+	Str5.length();		// 같은 기능
+	Str5.size();
 	printf("%s : %d", Str5.c_str(), (int)Str5.length());
 
 	if (Str1 == Str5)
@@ -101,7 +102,18 @@ void FindCharacter(const std::string& Str, const char Target)
 		// 찾은 것이 없다.
 		printf("%s에서 '%c'는 없습니다.\n", Str.c_str(), Target);
 	}
+
+	std::string Str1 = "Hello";
+	printf("%s -> %s\n", Str1.c_str(), Str1.substr(1).c_str());			// 특정 문자열 빼기
+	printf("%s -> %s\n", Str1.c_str(), Str1.substr(0, 3).c_str());
+	string str6 = "123456789";
+	int integer = std::stoi(str6);		// string을 int로 변환
+	printf("%d\n", integer);
+
+
 }
+
+
 
 void Day0528_FileIO()
 {

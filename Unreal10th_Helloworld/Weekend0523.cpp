@@ -1,5 +1,7 @@
 #include <iostream>
+#include "Utils.h"
 #include "Weekend0523.h"
+
 using namespace std;
 
 // 미로 배열
@@ -56,16 +58,6 @@ bool IsWall(int X, int Y)
 MoveDirection GetMoveInput(int PlayerX, int PlayerY)
 {
 	return MoveDirection();
-}
-
-float GetRandom()
-{
-	return 0.0f;
-}
-
-int GetRandomRange(int Min, int Max)
-{
-	return 0;
 }
 
 RandomIncounterType RandomIncounter()

@@ -1,4 +1,7 @@
 #pragma once
+//#include "MazeCommon.h"
+//#include "Player.h"
+
 
 enum MazeTile
 {
@@ -27,10 +30,8 @@ enum RandomIncounterType
 
 // constexpr; : 컴파일 타임에 결정되는 상수
 // constexpr int MazeHeight = 10;
-const int MazeHeight = 10;
-const int MazeWidth = 20;
-const int InvalidPosition = -1;
-const int InitHealth = 100;
+// const int MazeHeight = 10;
+// const int MazeWidth = 20;
 
 // 랜덤 인카운터 종류별 확률
 const float BattleRate = 0.1f;
@@ -43,6 +44,16 @@ const char* const ShapeWall = "#";
 const char* const ShapePath = ".";
 const char* const ShapeStart = "S";
 const char* const ShapeEnd = "E";
+
+// 미로 정보를 저장할 구조체
+struct MazeData
+{
+	unsigned int Width = 0;
+	unsigned int Height = 0;
+	int* Data = nullptr;
+
+	MazeData() = default;
+};
 
 // extern : 실제 선언은 아니고 다른 곳에 이런 변수/함수 등이 존재한다고 알려주는 것
 // extern int Maze[MazeHeight][MazeWidth]
@@ -72,12 +83,6 @@ bool IsWall(int X, int Y);
 
 // 이동 방향을 입력받고 해당 방향을 리턴하는 함수
 MoveDirection GetMoveInput(int PlayerX, int PlayerY);
-
-// 0.0f ~ 1.0f 사이를 리턴하는 함수
-float GetRandom();
-
-// Min ~ Max 사이의 랜덤한 값을 리턴하는 함수
-int GetRandomRange(int Min, int Max);
 
 // 랜덤 인카운터(전투) 발생 여부를 체크하는 함수
 RandomIncounterType RandomIncounter();

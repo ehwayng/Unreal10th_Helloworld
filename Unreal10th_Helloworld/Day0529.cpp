@@ -1,0 +1,72 @@
+#include "Day0529.h"
+#include "Enemy.h"
+
+void Day0529()
+{
+	MazeEnemy E1("오크", 1);
+	MazeEnemy E2("슬라임", 2);
+
+	PrintEnemyInfo(E1);
+	PrintEnemyInfo(E2);
+
+	MazeEnemy E3 = FusionEnemy(E1, E2);
+	PrintEnemyInfo(E3);
+
+	MazeEnemy E4 = E1 + E2;
+	PrintEnemyInfo(E4);
+
+	// 간단실습
+	
+	// 1. MazeEnemy에 - 연산자 오버로딩하기
+	MazeEnemy E5 = E1 - E2;
+	PrintEnemyInfo(E5);
+
+	// 2. MazeEnemy에 * 연산자 오버로딩하기 (*의 오른쪽 값은 float)
+	MazeEnemy E6 = E5 * 2;
+	PrintEnemyInfo(E6);
+	
+	//// 3. MazeEnemy에 *= 연산자 오버로딩하기 (*의 오른쪽 값은 float)
+	//MazeEnemy E6 *= 3;
+	//PrintEnemyInfo(E6);
+
+	// ===================실습===================
+	printf("\n===================실습===================\n\n");
+
+	Position Pos1(2, 3);
+	printf("Pos1"); PrintPosition(Pos1);
+	Position Pos2(7, 1);
+	printf("Pos2"); PrintPosition(Pos2);
+
+	Position Pos3 = Pos1 + Pos2;
+	printf("Pos3 = Pos1 + Pos2\n");
+	printf("Pos3"); PrintPosition(Pos3);
+
+}
+
+
+void PrintEnemyInfo(MazeEnemy& InEnemy)
+{
+	printf("------------------------------------\n");
+	printf("이름 : %s\n", InEnemy.Name.c_str());
+	printf("체력 : %d\n", InEnemy.Health);
+	printf("공격력 : %d - %d\n", InEnemy.AttackPowerMin, InEnemy.AttackPowerMax);
+	printf("보상 : %d\n", InEnemy.Reward);
+	printf("------------------------------------\n");
+}
+
+MazeEnemy FusionEnemy(MazeEnemy& InEnemy1, MazeEnemy& InEnemy2)
+{
+	MazeEnemy Result;
+	Result.Name = InEnemy1.Name + InEnemy2.Name;
+	Result.AttackPowerMin = (InEnemy1.AttackPowerMin + InEnemy2.AttackPowerMin) / 2;
+	Result.AttackPowerMax = (InEnemy1.AttackPowerMax + InEnemy2.AttackPowerMax);
+	Result.Reward = (InEnemy1.Reward + InEnemy2.Reward);
+
+	return Result;
+}
+
+void PrintPosition(Position& InPos)
+{
+	printf("(%d, %d)\n", InPos.X, InPos.Y);
+}
+

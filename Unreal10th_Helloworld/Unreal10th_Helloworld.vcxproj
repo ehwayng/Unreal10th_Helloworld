@@ -124,9 +124,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="0524_Homework.cpp" />
-    <ClCompile Include="Day0522.cpp" />
     <ClCompile Include="Day0527.cpp" />
     <ClCompile Include="Day0528.cpp" />
+    <ClCompile Include="Day0529.cpp" />
+    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Unreal10th_Helloworld.cpp" />
     <ClCompile Include="Utils.cpp" />
     <ClCompile Include="Weekend0523.cpp" />
@@ -139,6 +140,8 @@
     <ClInclude Include="Day0520.h" />
     <ClInclude Include="Day0527.h" />
     <ClInclude Include="Day0528.h" />
+    <ClInclude Include="Day0529.h" />
+    <ClInclude Include="Enemy.h" />
     <ClInclude Include="Utils.h" />
     <ClInclude Include="Weekend0523.h" />
   </ItemGroup>
