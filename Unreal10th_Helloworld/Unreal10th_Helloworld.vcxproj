@@ -131,6 +131,7 @@
     <ClCompile Include="Unreal10th_Helloworld.cpp" />
     <ClCompile Include="Utils.cpp" />
     <ClCompile Include="Weekend0523.cpp" />
+    <ClCompile Include="Weekend0530.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="0524_Homework.h" />
@@ -144,6 +145,7 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Utils.h" />
     <ClInclude Include="Weekend0523.h" />
+    <ClInclude Include="Weekend0530.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

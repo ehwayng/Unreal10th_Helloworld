@@ -3,12 +3,13 @@
 
 #include <iostream>
 #include <time.h>
-#include "Weekend0523.h"
-#include "0524_Homework.h"
-#include "Day0527.h"
 #include "Utils.h"
+#include "0524_Homework.h"
+#include "Weekend0523.h"
+#include "Day0527.h"
 #include "Day0528.h"
 #include "Day0529.h"
+#include "Weekend0530.h"
 
 using namespace std;
 
@@ -18,7 +19,7 @@ int main()
 	Seed = 0;
 	srand(Seed);
 
-	Day0529();
+	Weekend0530_Run1();
 }
 
 
