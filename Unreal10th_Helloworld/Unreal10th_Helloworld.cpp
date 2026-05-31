@@ -20,6 +20,10 @@ int main()
 	srand(Seed);
 
 	Weekend0530_Run1();
+
+	printf("\n\n");
+
+	Weekend0530_Run2();
 }
 
 
