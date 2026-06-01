@@ -57,19 +57,29 @@ struct Participant {
         int Score = 0;
         int AceCount = 0;
 
-        for (int i = 0; i < CardCount; i++)
+        for (int i = 0; i < (CardCount - 1); i++)
         {
-            Score += InHand[i].Value;
-            if (InHand[i].CardName == "A")
-                AceCount++;
+            for (int j = i + 1; j < CardCount; j++)
+            {
+                if (InHand[j].Value > InHand[i].Value)      // 두개씩 비교하며 앞쪽으로 값이 큰 카드를 몰아넣기
+                {
+                    Cards Temp = InHand[i];
+                    InHand[i] = InHand[j];
+                    InHand[j] = Temp;
+                }
+            }
         }
+        Score = InHand[0].Value + InHand[1].Value;
+        if ((InHand[0].CardName == "A") || (InHand[1].CardName == "A"))
+        AceCount++;
 
-        while (Score > 21 && AceCount > 0) {
+        while (Score > 21 && AceCount > 0)
+        {
             Score -= 10;    //에이스카드를 유리하게 낮춰서 적용
             AceCount--;
         }
-        return Score;
 
+        return Score;
     }
 
     bool IsBlackjack() {

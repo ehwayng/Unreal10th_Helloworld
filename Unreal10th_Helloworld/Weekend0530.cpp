@@ -202,6 +202,13 @@ void Weekend0530_Run2()
 	{
 		printf("딜러가 카드를 1장 더 뽑습니다.\n");
 		Dealer.AddCard(DrawCard());
+
+		printf("현재 딜러 카드: ");
+		for (int i = 0; i < Dealer.CardCount; i++)
+		{
+			printf("%s ", Dealer.InHand[i].CardName.c_str());
+		}
+		printf("\n");
 	}
 
 	// 승패 판정
