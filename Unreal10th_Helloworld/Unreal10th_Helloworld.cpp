@@ -10,6 +10,7 @@
 #include "Day0528.h"
 #include "Day0529.h"
 #include "Weekend0530.h"
+#include "Day0602.h"
 
 using namespace std;
 
@@ -19,11 +20,13 @@ int main()
 	Seed = 0;
 	srand(Seed);
 
-	Weekend0530_Run1();
+	//Weekend0530_Run1();
 
-	printf("\n\n");
+	//printf("\n\n");
 
-	Weekend0530_Run2();
+	//Weekend0530_Run2();
+
+	Day0602();
 }
 
 

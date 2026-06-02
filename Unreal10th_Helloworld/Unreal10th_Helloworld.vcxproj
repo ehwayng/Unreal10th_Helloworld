@@ -127,6 +127,7 @@
     <ClCompile Include="Day0527.cpp" />
     <ClCompile Include="Day0528.cpp" />
     <ClCompile Include="Day0529.cpp" />
+    <ClCompile Include="Day0602.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Unreal10th_Helloworld.cpp" />
     <ClCompile Include="Utils.cpp" />
@@ -142,6 +143,7 @@
     <ClInclude Include="Day0527.h" />
     <ClInclude Include="Day0528.h" />
     <ClInclude Include="Day0529.h" />
+    <ClInclude Include="Day0602.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Utils.h" />
     <ClInclude Include="Weekend0523.h" />
