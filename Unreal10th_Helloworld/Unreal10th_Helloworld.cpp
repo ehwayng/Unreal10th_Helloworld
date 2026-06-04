@@ -11,6 +11,7 @@
 #include "Day0529.h"
 #include "Weekend0530.h"
 #include "Day0602.h"
+#include "Weekend0606.h"
 
 using namespace std;
 
@@ -26,7 +27,9 @@ int main()
 
 	//Weekend0530_Run2();
 
-	Day0602();
+	//Day0602();
+
+	Weekend0606();
 }
 
 

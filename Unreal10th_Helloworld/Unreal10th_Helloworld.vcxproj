@@ -133,10 +133,11 @@
     <ClCompile Include="Utils.cpp" />
     <ClCompile Include="Weekend0523.cpp" />
     <ClCompile Include="Weekend0530.cpp" />
+    <ClCompile Include="Weekend0606.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="0524_Homework.h" />
-    <ClInclude Include="Day0515.h" />
+    <ClInclude Include="Day0516.h" />
     <ClInclude Include="Day0518.h" />
     <ClInclude Include="Day0519.h" />
     <ClInclude Include="Day0520.h" />
@@ -148,6 +149,7 @@
     <ClInclude Include="Utils.h" />
     <ClInclude Include="Weekend0523.h" />
     <ClInclude Include="Weekend0530.h" />
+    <ClInclude Include="Weekend0606.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

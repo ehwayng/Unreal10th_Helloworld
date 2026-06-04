@@ -17,7 +17,7 @@ struct YMD
 
 	YMD(int Y, int M, int D)
 	{
-		DayName = ReturnDay(Y, M, D);		// 함수 완료하면 위에거 지우고 주석 풀기
+		DayName = ReturnDay(Y, M, D);		
 		Year = Y;
 		Month = M;
 		Day = D;

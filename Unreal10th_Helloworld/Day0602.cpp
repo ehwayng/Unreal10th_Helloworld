@@ -1,5 +1,7 @@
 #include "Day0602.h"
 
+
+
 void Animal::Move()			// Animal 클래스의 멤버함수인 Move
 {
 	printf("\n이동합니다.\n");
