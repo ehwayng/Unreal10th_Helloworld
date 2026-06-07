@@ -7,113 +7,168 @@
 	int Ycoordinate[10] = { 1,2,3,4,5,6,7,8,9,10 };		// Y축 좌표 배열
 
 	int TrueMap[MapSize][MapSize] = { 0, };		// 실제 함선이 배치된 맵
-	int PlayerMap[MapSize][MapSize] =			// 플레이어에게 보여질 맵 (지금은 출력 확인용)
-	{
-		{1,2,1,0,0,1,0,0,0,1},
-		{0,1,2,0,0,0,1,1,0,0},
-		{1,2,1,0,0,1,0,0,0,1},
-		{1,2,1,0,0,1,0,0,0,1},
-		{0,1,2,0,0,0,1,1,0,0},
-		{0,1,2,0,0,0,1,1,0,0},
-		{1,2,1,0,0,1,0,0,0,1},
-		{0,1,2,0,0,0,1,1,0,0},
-		{1,2,1,0,0,1,0,0,0,1},
-		{0,1,2,0,0,0,1,1,0,0}
-	};
+	int PlayerMap[MapSize][MapSize] = { 0, };	// 플레이어에게 보여질 맵
 
 	int PlayCount = 0;			//현재 공격 횟수
-	const int MaxCount = 30;	//최대 공격횟수
-
+	const int MaxCount = 30;	//최대 공격 횟수
+	int HitCount = 0;			//맞춘 횟수 : 14회 달성시 승리
+	int RemainingShip = 4;		//남은 함선
+	bool IsGameOver = false;
+	
 void Weekend0606()
 {
-	//10x10 맵 만들고, 함선 랜덤 배치시키기
-	//플레이어에게 출력되는 맵에는 함선 안 보이고 위치만 정해져 있음 (원하면 둘 다 볼 수 있도록 두가지 함수 세팅)
+	// 각 맵 출력 코드
+	// PrintMap();
+	// PrintTrueMap();
 
-	//while 문 : 30회 이내/모든 함선 격침되지 않는 조건 안에서 반복
-		// 1. 좌표 입력 2. 결과 변수 반영 및 출력(텍스트, 맵)
-		// 중복 공격 막기
-		// 남은 공격 횟수, 남은 함선 수 안내
+	//1. 함선 랜덤 배치
+	RandomShip();
 
-	//종료 시, 승리/패배 판별 및 출력
-		// 패배 시 함선 위치 출력
-
-	//===================================================================
-
-	//맵 생성 및 초기화
-	//함선 배치 (True 맵에, Player 맵은 초기화 상태)
-
-	//공격턴 반복
-	//공격한 좌표의 [TrueMap] 인덱스가
-	//		0일 시 > [PlayerMap]의 해당 좌표를 2로 변경 후 출력 (공격실패 출력)
-	//		1일 시 > [PlayerMap]의 해당 좌표도 1로 변경 후 출력 (공격성공 출력) 
-	//남은 횟수/갯수 출력
-
-	//종료 시 결과와 TrueMap 출력
-
-
-
-
-	//플레이어 맵 출력
-	PrintMap();
-
+	//2. 게임 시작, 게임 종료 조건 만족 전까지 반복
 	while (!IsGameOver)
 	{ 
 		int SelectX = 0;
 		std::string SelectY;
-		printf("공격할 좌표를 알파벳 → 숫자 순으로 입력해 주세요 : \n");	
+		
+		PrintMap();
+		PrintRemaining();	//남은공격횟수와 남은 함선수 출력
+		printf("\n공격할 좌표를 알파벳(A~J), 숫자(1~10) 순으로 입력해 주세요 : \n");	
 		std::cin >> SelectY >> SelectX;
 
-		//입력된 알파벳 숫자 좌표로 치환 필요
+		char CharY = SelectY[0];
+		int AttackX = SelectX - 1;
+		int AttackY = CharY - 'A';	//아스키코드 이용
+
+		//범위 밖의 좌표 입력시 오류
+		if (AttackY < 0 || AttackY >= MapSize || AttackX < 0 || AttackX >= MapSize)
+		{
+			printf("\n입력 오류! 대문자 A~J, 숫자 1~10 사이로 입력해주세요.\n");
+			continue;
+		}
+		//공격 중복 오류
+		if (PlayerMap[AttackY][AttackX] != 0)
+		{
+			printf("\n이미 공격한 좌표입니다. 다른 곳을 선택하세요.\n");
+			continue;
+		}
+
+		PlayCount++;
+		
+		if (TrueMap[AttackY][AttackX] > 0)		//명중 성공 (TrueMap의 2,3,4,5)
+		{
+			int HittedShip = TrueMap[AttackY][AttackX];	//명중한 함선의 사이즈 기억
+			std::cout << "\n명중! 함선을 파괴했습니다.\n";
+			PlayerMap[AttackY][AttackX] = 1;	//플레이어 맵에 명중 표시
+			HitCount++;
+			PrintMap();
+
+			bool DestroyedShip = true; //함선 하나가 격침되었는지 판별
+			for (int i = 0; i < MapSize; i++)
+			{
+				for (int j = 0; j < MapSize; j++)
+				{
+					// TrueMap에 있는 배 중, PlayerMap에 명중(1) 표시가 안 된 곳이 있는지 확인
+					if (TrueMap[i][j] == HittedShip && PlayerMap[i][j] != 1)
+					{
+						DestroyedShip = false;	//격침 아님
+						break;
+					}
+				}
+				if (!DestroyedShip) break;
+			}
+
+			// 같은 사이즈의 칸을 다 명중하면 격침
+			if (DestroyedShip)
+			{
+				printf("\n크기 %d의 함선이 격침되었습니다!\n", HittedShip);
+				RemainingShip--;	//남은 함선 수 감소
+			}
+		}
+		else
+		{
+			std::cout << "\n실패! 빗나갔습니다.\n";
+			PlayerMap[AttackY][AttackX] = 2;	//플레이어 맵에 실패 표시
+			PrintMap();
+		}
+
+		//게임 종료 조건
+		if (HitCount == 14)
+		{
+			printf("\n플레이어 승리! 모든 함선을 격침시켰습니다!\n");
+			IsGameOver = true;
+		}
+		else if ((MaxCount - PlayCount) == 0)
+		{
+			printf("\n플레이어 패배! 제한 횟수를 모두 소진했습니다.\n실제 함선 위치는 다음과 같습니다.\n");
+			IsGameOver = true;
+			PrintTrueMap();
+		}
 	}
-	
 }
 
 
 
 void RandomShip()
 {
-	//함선 랜덤 배치 (총 4개)
-	//100개의 인덱스 중 14개 랜덤으로 선택
-	//5 4 3 2 가 각 덩이씩 가로 혹은 세로로 연속되어야 함
+	unsigned int Seed = (unsigned int)time(0);
+	Seed = 0;
+	srand(Seed);
 
-	// 1순위
-	// 10개를 6개로 취급하고 하나를 랜덤선택하면 사이즈 5의 배를 하나 만들 수 있음
-	// 7개에서 1개 랜덤선택 > 4칸 배
-	// 8개 중 1 > 3칸 배, 9개 중 1 > 2칸 배
+	int ShipSize[4] = { 2,3,4,5 };
 
-	// 1. 20개 중 1줄 선택, 그 줄에서 6개중1 선택 > 5칸 배
-	// 2. 20개 중 1줄 선택,
-	//				if (그 줄에 5칸 배가 있다면)
-	//					if(끝에 붙어있다면 한칸 띄우고 배치)
-	//					else(아니라면 배치불가 else로 넘어가라)
-	//				else (그 줄에 5칸 배가 없다면)
-	//					7개중 1 선택 
-	// 3. 20개 중 1줄 선택,
-	//				if (그 줄에 5칸, 4칸이 같이 있다면)
-	//					불가. 걍 넘어가라.
-	//				else(5칸만 있다면)
-	//					if(한쪽 여백이 1칸이거나 딱 붙어 있으면)
-	//					배치 가능. 여백 2칸이상이면 다시 넘어가야 함.
-	//				else(4칸만 있다면)
-	//					if(정중앙에 있다면) 배치불가
-	//					else(한쪽으로 조금이라도 쏠렸다면) 배치 가능
-	//				else(아무것도 없다면)
-	//					8개중 1 선택
-	// 4. 20개 중 1줄 선택
-	//				if (그 줄에 5칸, 4칸이 같이 있거나 5칸, 3칸이 같이 있거나 4칸, 3칸이 같이 있다면)
-	//					불가. 걍 넘어가라.
-	//				else (5칸만 있다면)
-	//				else (4칸만 있다면)
-	//				else (3칸만 있다면)
-	//				else (아무것도 없다면)
+	for (int Size : ShipSize)
+	{
+		bool ShipPlaced = false;
 
-	// 선택된 함선 인덱스 => 1
+		while (!ShipPlaced)
+		{
+			int Direction = rand() % 2;    // 0 또는 1 (방향)
+			int ShipX = rand() % 10;     // 0 ~ 9 (X 좌표)
+			int ShipY = rand() % 10;     // 0 ~ 9 (Y 좌표)
+
+			bool CanPlace = true;
+
+			// 배치 가능 여부 판별	
+			if (Direction == 0)	// 가로
+			{
+				if (ShipX + Size > MapSize) CanPlace = false;
+				else {
+					for (int i = 0; i < Size; i++) {
+						if (TrueMap[ShipY][ShipX + i] != 0)
+						{ CanPlace = false; break; }
+					}
+				}
+			}
+			else   //세로
+			{
+				if (ShipY + Size > MapSize) CanPlace = false;
+				else {
+					for (int i = 0; i < Size; i++) {
+						if (TrueMap[ShipY + i][ShipX] != 0)
+						{ CanPlace = false; break; }
+					}
+				}
+			}
+
+			// 통과시 배치
+			if (CanPlace)
+			{
+				if (Direction == 0)
+				{
+					for (int i = 0; i < Size; i++)
+						TrueMap[ShipY][ShipX + i] = Size;	//함선의 위치를 사이즈로 표기
+				}
+				else
+				{
+					for (int i = 0; i < Size; i++)
+						TrueMap[ShipY + i][ShipX] = Size;
+				}
+				ShipPlaced = true;
+			}
+		}
+	}
 }
 
-bool IsGameOver()	// (모든 함선 격추&&플레이카운트 30 이하) || (플레이카운트 30 && 함선 남아있는 경우)
-{
-	return false;
-}
 
 void PrintMap()
 {
@@ -157,10 +212,22 @@ void PrintMap()
 	printf("\n");
 }
 
-void PrintResult()
+void PrintTrueMap()
 {
+	for (int i = 0; i < MapSize; i++)
+	{
+		for (int j = 0; j < MapSize; j++)
+		{
+			printf("%3d ", TrueMap[i][j]);
+		}
+		printf("\n");
+	}
 }
+
 
 void PrintRemaining()
 {
+	printf("============================================\n");
+	printf("[남은 공격] %d회 / [남은 함선] %d개\n", MaxCount - PlayCount, RemainingShip);
+	printf("============================================\n");
 }

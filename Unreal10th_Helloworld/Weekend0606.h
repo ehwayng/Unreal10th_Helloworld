@@ -35,14 +35,9 @@
 
 void Weekend0606();
 
-
-
-
 void RandomShip();		//함선 랜덤 배치하는 함수
-bool IsGameOver();		//게임이 끝나는 조건
-
-void PrintMap();		//맵 출력하는 함수
-void PrintResult();		//공격 결과 출력하는 함수 (명중/실패)
+void PrintMap();		//플레이어 맵 출력하는 함수
+void PrintTrueMap();	//실제 맵 출력하는 함수
 void PrintRemaining();	//남은 횟수와 함선 출력하는 함수
 
 
