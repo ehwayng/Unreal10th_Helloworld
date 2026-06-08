@@ -124,6 +124,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="0524_Homework.cpp" />
+    <ClCompile Include="C++PersonalProject_0615.cpp" />
     <ClCompile Include="Day0527.cpp" />
     <ClCompile Include="Day0528.cpp" />
     <ClCompile Include="Day0529.cpp" />
@@ -137,6 +138,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="0524_Homework.h" />
+    <ClInclude Include="C++PersonalProject_0615.h" />
     <ClInclude Include="Day0516.h" />
     <ClInclude Include="Day0518.h" />
     <ClInclude Include="Day0519.h" />

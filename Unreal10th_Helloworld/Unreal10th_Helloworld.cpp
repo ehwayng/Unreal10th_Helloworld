@@ -12,6 +12,7 @@
 #include "Weekend0530.h"
 #include "Day0602.h"
 #include "Weekend0606.h"
+#include "C++PersonalProject_0615.h"
 
 using namespace std;
 
@@ -30,6 +31,8 @@ int main()
 	//Day0602();
 
 	Weekend0606();
+
+	//PersonalProject_Main();
 }
 
 

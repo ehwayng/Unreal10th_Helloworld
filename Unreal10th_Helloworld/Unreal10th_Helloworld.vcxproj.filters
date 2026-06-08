@@ -19,6 +19,12 @@
     <Filter Include="헤더 파일\Practice">
       <UniqueIdentifier>{b4a9220f-7bd0-426e-8e0a-06bbc0289128}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\PersonalProject">
+      <UniqueIdentifier>{7fedd00f-aada-4651-acfc-6dfb4fde368a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\PersonalProject">
+      <UniqueIdentifier>{49b3d52a-75d8-4979-aa39-4d0c169e9003}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Unreal10th_Helloworld.cpp">
@@ -53,6 +59,9 @@
     </ClCompile>
     <ClCompile Include="Weekend0606.cpp">
       <Filter>소스 파일\Practice</Filter>
+    </ClCompile>
+    <ClCompile Include="C++PersonalProject_0615.cpp">
+      <Filter>소스 파일\PersonalProject</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -97,6 +106,9 @@
     </ClInclude>
     <ClInclude Include="Weekend0606.h">
       <Filter>헤더 파일\Practice</Filter>
+    </ClInclude>
+    <ClInclude Include="C++PersonalProject_0615.h">
+      <Filter>헤더 파일\PersonalProject</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
