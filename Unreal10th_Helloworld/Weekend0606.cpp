@@ -13,7 +13,7 @@
 	const int MaxCount = 30;	//최대 공격 횟수
 	int HitCount = 0;			//맞춘 횟수 : 14회 달성시 승리
 	int RemainingShip = 4;		//남은 함선
-	bool IsGameOver = false;
+	bool IsGameOver = false;	//게임 종료 조건
 	
 void Weekend0606()
 {
@@ -57,7 +57,7 @@ void Weekend0606()
 		if (TrueMap[AttackY][AttackX] > 0)		//명중 성공 (TrueMap의 2,3,4,5)
 		{
 			int HittedShip = TrueMap[AttackY][AttackX];	//명중한 함선의 사이즈 기억
-			std::cout << "\n명중! 함선을 파괴했습니다.\n";
+			printf("\n명중! 함선을 파괴했습니다.\n");
 			PlayerMap[AttackY][AttackX] = 1;	//플레이어 맵에 명중 표시
 			HitCount++;
 			PrintMap();
@@ -86,7 +86,7 @@ void Weekend0606()
 		}
 		else
 		{
-			std::cout << "\n실패! 빗나갔습니다.\n";
+			printf("\n실패! 빗나갔습니다.\n");
 			PlayerMap[AttackY][AttackX] = 2;	//플레이어 맵에 실패 표시
 			PrintMap();
 		}
@@ -105,8 +105,6 @@ void Weekend0606()
 		}
 	}
 }
-
-
 
 void RandomShip()
 {
@@ -131,9 +129,12 @@ void RandomShip()
 			// 배치 가능 여부 판별	
 			if (Direction == 0)	// 가로
 			{
-				if (ShipX + Size > MapSize) CanPlace = false;
-				else {
-					for (int i = 0; i < Size; i++) {
+				if (ShipX + Size > MapSize)
+					CanPlace = false;
+				else
+				{
+					for (int i = 0; i < Size; i++)
+					{
 						if (TrueMap[ShipY][ShipX + i] != 0)
 						{ CanPlace = false; break; }
 					}
@@ -168,7 +169,6 @@ void RandomShip()
 		}
 	}
 }
-
 
 void PrintMap()
 {
@@ -223,7 +223,6 @@ void PrintTrueMap()
 		printf("\n");
 	}
 }
-
 
 void PrintRemaining()
 {
