@@ -13,14 +13,15 @@
 #include "Day0602.h"
 #include "Weekend0606.h"
 #include "C++PersonalProject_0615.h"
+#include "Day0609.h"
 
 using namespace std;
 
 int main()
 {
-	unsigned int Seed = (unsigned int)time(0);
-	Seed = 0;
-	srand(Seed);
+	//unsigned int Seed = (unsigned int)time(0);
+	//Seed = 0;
+	//srand(Seed);
 
 	//Weekend0530_Run1();
 
@@ -30,9 +31,11 @@ int main()
 
 	//Day0602();
 
-	Weekend0606();
+	//Weekend0606();
 
 	//PersonalProject_Main();
+
+	Day0609();
 }
 
 

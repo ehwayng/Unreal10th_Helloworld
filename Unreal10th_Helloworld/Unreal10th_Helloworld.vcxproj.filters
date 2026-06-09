@@ -63,6 +63,15 @@
     <ClCompile Include="C++PersonalProject_0615.cpp">
       <Filter>소스 파일\PersonalProject</Filter>
     </ClCompile>
+    <ClCompile Include="Day0609.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="CircularQueue.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="FixedStack.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Day0516.h">
@@ -109,6 +118,15 @@
     </ClInclude>
     <ClInclude Include="C++PersonalProject_0615.h">
       <Filter>헤더 파일\PersonalProject</Filter>
+    </ClInclude>
+    <ClInclude Include="Day0609.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="CircularQueue.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="FixedStack.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
