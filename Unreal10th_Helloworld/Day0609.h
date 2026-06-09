@@ -1,4 +1,4 @@
 #pragma once
 
-void Day0609();
+int Day0609();
 

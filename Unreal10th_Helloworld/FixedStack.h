@@ -1,4 +1,8 @@
 #pragma once
+#include <iostream>
+#include <string>
+
+using namespace std;
 
 //class FixedStack
 //{
@@ -17,19 +21,44 @@
 class DynamicStack
 {
 public:
-	char* Data;
-	int MaxSize;	//최대 크기
+	char* Data = nullptr;
+	int MaxSize = 0;		//최대 크기
 	int TopIndex = 0;
 
 	//생성자
 public:
 	DynamicStack() = default;
 	//소멸자
-	~DynamicStack() = default;
+	~DynamicStack()
+	{
+		if (Data != nullptr)
+		{
+			delete[] Data;
+		}
+	} 
 
 public:
-	void Push(int InSize, char* InStr);
-	int Pop();
+	void Push(char InChar)
+	{
+		if (TopIndex >= MaxSize)
+		{
+			printf("스택이 가득 찼습니다.\n");
+			return;
+		}
+		Data[TopIndex] = InChar;
+		TopIndex++;
+	}
+	
+	char Pop()
+	{
+		if (TopIndex <= 0)
+		{
+			printf("스택이 비어있습니다.\n");
+			return '\0';
+		}
+		TopIndex--;
+		return Data[TopIndex];
+	}
 };
 
 

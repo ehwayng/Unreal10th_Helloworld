@@ -6,7 +6,7 @@
 #include "CircularQueue.h"
 using namespace std;
 		
-void Day0609()
+int Day0609()
 {
 	// 스택(Stack)
 	// 특징 : 후입선출(Last In First Out, LIFO) 구조
@@ -59,19 +59,46 @@ void Day0609()
 
 	DynamicStack* MyDynamicStack = new DynamicStack();
 
-	string Input;
 	printf("입력하려는 문자열의 길이를 입력하세요 : ");
 	cin >> MyDynamicStack->MaxSize;
+	MyDynamicStack->Data = new char[MyDynamicStack->MaxSize];
+
+	string Input;
 	printf("문자열을 영어로 입력하세요 : ");
 	cin >> Input;
 	
 	for (char c : Input)
 	{
-		MyDynamicStack->Push(MyDynamicStack->MaxSize, static_cast<char*>(Input));
-
+		MyDynamicStack->Push(c);
 	}
 
+	printf("Pop한 결과 : ");
+	while (MyDynamicStack->TopIndex > 0)
+	{
+		printf("%c", MyDynamicStack->Pop());
+	}
+	printf("\n");
+	delete MyDynamicStack;
+	return 0;
 
-	
-	
+	//======================================================여기 왜 안되냐==
+
+	string TestString;
+	printf("원형 큐에 입력할 문자열을 입력하세요: ");
+	cin >> TestString;
+
+	// 크기를 15로 지정해서 가변형 원형 큐를 만듭니다. (내가 원하는 크기 지정 가능!)
+	DynamicCircularQueue MyQueue(15);
+
+	printf("큐에 데이터 Enqueue 중...\n");
+	for (char c : TestString) {
+		MyQueue.Enqueue(c);
+	}
+
+	printf("데이터 Dequeue 결과 : ");
+	// 큐가 텅 빌 때까지 데이터를 하나씩 빼서 출력합니다.
+	while (!MyQueue.IsEmpty()) {
+		printf("%c", MyQueue.Dequeue());
+	}
+	printf("\n");
 }

@@ -4,7 +4,7 @@
 using namespace std;
 
 //플레이어 기본정보 변수 세팅
-std::string PlayerName = nullptr;			//이름
+//std::string PlayerName = nullptr;			//이름
 int Level = 1;				//현재 레벨
 const int MaxLevel = 50;	//최대 레벨 : 좀 줄일까...? 버거울 것 같기도...
 int Money = 10000;			//현재 보유금액
@@ -28,7 +28,7 @@ void Tutorial()
 {
 	printf("모험자님의 이름을 알려주세요 : ");
 	/*cin >> PlayerName;*/ //문자열 입력된 것 잘 적용되는지 확인 필요
-	printf("%s님, 모험을 시작하신 것을 환영합니다!\n[내 정보]를 확인하기 위해 아무 키나 눌러보세요.\n", PlayerName); //아무키를 어떻게 적용하는지
+	//printf("%s님, 모험을 시작하신 것을 환영합니다!\n[내 정보]를 확인하기 위해 아무 키나 눌러보세요.\n", PlayerName); //아무키를 어떻게 적용하는지
 	PrintInfo();
 
 	//장비창, 인벤토리 안내
