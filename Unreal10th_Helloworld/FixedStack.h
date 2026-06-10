@@ -25,14 +25,14 @@ public:
 	int MaxSize = 0;		//최대 크기
 	int TopIndex = 0;
 
-	//생성자
 public:
+	//생성자
 	DynamicStack() = default;
 	//소멸자
 	~DynamicStack()
 	{
 		if (Data != nullptr)
-		{
+		{  
 			delete[] Data;
 		}
 	} 

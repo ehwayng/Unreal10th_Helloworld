@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 // Unreal10th_Helloworld.cpp : 이 파일에는 'main' 함수가 포함됩니다. 거기서 프로그램 실행이 시작되고 종료됩니다.
 //
 
@@ -13,7 +14,9 @@
 //#include "Day0602.h"
 //#include "Weekend0606.h"
 //#include "C++PersonalProject_0615.h"
-#include "Day0609.h"
+//#include "Day0609.h"
+#include "Day0610.h"
+#include "T_FixedStack.h"
 
 using namespace std;
 
@@ -35,9 +38,11 @@ int main()
 
 	//PersonalProject_Main();
 
-	Day0609();
+	//Day0609();
 
-
+	Day0610 day0610;
+	//day0610.TestMain();
+	day0610.Practice0610();
 
 }
 

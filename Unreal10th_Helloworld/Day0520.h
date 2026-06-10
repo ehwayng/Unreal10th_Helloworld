@@ -1,4 +1,6 @@
 #pragma once
+#include <iostream>
+using namespace std;
 
 int main()
 {
@@ -271,7 +273,7 @@ cin >> Select;
 
 
 	// 4. 1~100 중에 7의 배수만 출력하기
-	for (int i = 1; i < 101; 1++)
+	for (int i = 1; i < 101; i++)
 	{
 		if (i % 7 == 0)
 		{
@@ -300,10 +302,10 @@ cin >> Select;
 	{
 		for (int j = 0; j < inputNumber - 1 - i; j++)
 		{
-			prinf(" ");
+			printf(" ");
 		}
 
-		for (int j = 0l j < 2 * i + 1; j++)
+		for (int j = 0; j < 2 * i + 1; j++)
 		{
 			printf("*");
 		}
