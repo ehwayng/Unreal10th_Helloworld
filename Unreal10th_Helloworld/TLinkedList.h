@@ -1,15 +1,59 @@
+#pragma once
 #include <iostream>
-#include "LinkedList.h"
-#include "Weekend0606.h"
+#include <type_traits>
+#include <cmath>
+#include <limits>
+#include <concepts>
+
+template<typename T>
+struct TListNode
+{
+	T Data = {};					// 데이터 부분. 이 노드가 관리할 실제 데이터
+	TListNode<T>* Next = nullptr;	// 링크 부분. 다음 노드의 주소(null이면 이 노드는 Tail)
+
+	TListNode(T InData) : Data(InData) {}
+};
 
 
+template<typename T>
+class TLinkedList
+{
+public:
+    TLinkedList() = default;
+    ~TLinkedList();
 
-void LinkedList::Add(int InData)
+    void Add(T InData);							// 리스트의 마지막에 데이터를 추가하는 함수
+    void InsertAt(T InData, int InPosition);	// 리스트의 중간에 데이터를 추가하는 함수
+    void Remove(T InData);						// 특정 데이터를 가지는 노드를 제거하는 함수
+    void RemoveAt(int InPosition);				// 특정 번째의 노드를 제거하는 함수
+    TListNode<T>* Search(T InData) const;		// 특정 데이터가 있는지 확인하는 함수. 리턴이 null이면 없다. null이 아니면 찾은 노드
+    void Clear();								// 모든 노드를 제거하는 함수
+    void PrintList() const;						// 리스트의 현재 상황을 출력하는 함수
+
+    inline bool IsEmpty() const { return Head == nullptr; }
+    inline int GetSize() const { return Size; }
+
+private:
+    TListNode<T>* Head = nullptr;	// 시작 노드(null이면 리스트가 비어있다.)
+    TListNode<T>* Tail = nullptr;	// 마지막 노드
+    int Size = 0;	// 해드부터 이어지는 전체 노드의 개수
+
+    bool IsEqual(T DataA, T DataB) const;
+};
+
+template<typename T>
+TLinkedList<T>::~TLinkedList()
+{
+    Clear();
+}
+
+template<typename T>
+inline void TLinkedList<T>::Add(T InData)
 {
     // InData가 들어간 노드를 만든다
-    ListNode* NewNode = new ListNode(InData);
+    TListNode<T>* NewNode = new TListNode<T>(InData);
 
-    if (Head == nullptr)
+    if (IsEmpty())
     {
         // 처음 넣을 때
         Head = NewNode;
@@ -23,11 +67,10 @@ void LinkedList::Add(int InData)
     }
 
     Size++;
-
-    // 해드가 없는 경우. Tail과 Size에 대한 처리 필요
 }
 
-void LinkedList::InsertAt(int InData, int InPosition)
+template<typename T>
+inline void TLinkedList<T>::InsertAt(T InData, int InPosition)
 {
     if (InPosition > Size)
     {
@@ -40,7 +83,7 @@ void LinkedList::InsertAt(int InData, int InPosition)
     }
 
     // InData가 들어간 노드를 만든다
-    ListNode* NewNode = new ListNode(InData);
+    TListNode<T>* NewNode = new TListNode<T>(InData);
     if (InPosition == 0)
     {
         NewNode->Next = Head;
@@ -49,8 +92,8 @@ void LinkedList::InsertAt(int InData, int InPosition)
     else
     {
         // 포지션까지 Head에서 시작해서 Next를 계속 타고 이동한다.
-        ListNode* PrevNode = Head;
-        ListNode* Current = Head;
+        TListNode<T>* PrevNode = Head;
+        TListNode<T>* Current = Head;
         for (int i = 0; i < InPosition; i++)
         {
             PrevNode = Current;
@@ -62,14 +105,15 @@ void LinkedList::InsertAt(int InData, int InPosition)
     Size++;
 }
 
-void LinkedList::Remove(int InData)
+template<typename T>
+inline void TLinkedList<T>::Remove(T InData)
 {
     if (Head == nullptr)
         return;
 
     // InData를 가진 노드가 있는지 Head부터 찾는다.
-    ListNode* NodeToDelete = nullptr;
-    ListNode* PrevNode = nullptr;
+    TListNode<T>* NodeToDelete = nullptr;
+    TListNode<T>* PrevNode = nullptr;
 
     if (Head->Data == InData)
     {
@@ -110,11 +154,12 @@ void LinkedList::Remove(int InData)
     }
     else
     {
-        printf("오류 : %d 값을 가진 노드가 없습니다.\n", InData);
+        std::cout << "오류 : " << InData << " 값을 가진 노드가 없습니다.\n";
     }
 }
 
-void LinkedList::RemoveAt(int InPosition)
+template<typename T>
+inline void TLinkedList<T>::RemoveAt(int InPosition)
 {
     if (InPosition >= Size)
     {
@@ -122,13 +167,13 @@ void LinkedList::RemoveAt(int InPosition)
         return;     //위치가 없는 경우는 그냥 종료
     }
 
-    ListNode* NodeToDelete = nullptr;
+    TListNode<T>* NodeToDelete = nullptr;
     if (InPosition == 0)
     {
         // 특수 처리(맨 앞이다)
         NodeToDelete = Head;
         Head = Head->Next;
-        if (Head == nullptr)
+        if (IsEmpty())
         {
             Tail = nullptr;
         }
@@ -136,7 +181,7 @@ void LinkedList::RemoveAt(int InPosition)
     else
     {
         // 위치 찾기
-        ListNode* PrevNode = Head;
+        TListNode<T>* PrevNode = Head;
         int TargetIndex = InPosition - 1;       // 지울 노드의 앞쪽노드(PrevNode)까지 가기 위해서
         for (int i = 0; i < TargetIndex; i++)
         {
@@ -157,13 +202,14 @@ void LinkedList::RemoveAt(int InPosition)
     Size--;
 }
 
-ListNode* LinkedList::Search(int InData) const
+template<typename T>
+TListNode<T>* TLinkedList<T>::Search(T InData) const
 {
     // InData와 같은 값을 가지는 노드 찾기
-    ListNode* Current = Head;
+    TListNode<T>* Current = Head;
     while (Current != nullptr)
     {
-        if (Current->Data == InData)
+        if (IsEqual(Current->Data, InData))
         {
             break;
         }
@@ -172,16 +218,17 @@ ListNode* LinkedList::Search(int InData) const
     return Current;
 }
 
-void LinkedList::Clear()
+template<typename T>
+inline void TLinkedList<T>::Clear()
 {
-    // 동적할당이 된 노드를 모두 제거한다.
     while (Head)
     {
         RemoveAt(0);
     }
 }
 
-void LinkedList::PrintList() const
+template<typename T>
+inline void TLinkedList<T>::PrintList() const
 {
     // 리스트 Head부터 Tail까지 출력하는 함수
     if (Head == nullptr && Size == 0)
@@ -191,11 +238,52 @@ void LinkedList::PrintList() const
     }
 
     printf("리스트(크기:%d) : ", Size);
-    ListNode* Current = Head;
+    TListNode<T>* Current = Head;
     while (Current != nullptr)
     {
-        printf("%d -> ", Current->Data);
+        if constexpr (std::is_same_v<T, int>) {
+            printf("%d -> ", Current->Data);
+        }
+        else if constexpr (std::is_same_v<T, unsigned int>) {
+            printf("%u -> ", Current->Data);
+        }
+        else if constexpr (std::is_same_v<T, float>) {
+            printf("%f -> ", Current->Data);
+        }
+        else if constexpr (std::is_same_v<T, double>) {
+            printf("%lf -> ", Current->Data);
+        }
+        else {
+            std::cout << Current->Data << " -> ";
+        }
+
         Current = Current->Next;
     }
     printf("nullptr\n");
 }
+
+template<typename T>
+inline bool TLinkedList<T>::IsEqual(T DataA, T DataB) const
+{
+    if constexpr (std::is_floating_point_v<T>)
+    {
+        return std::abs(DataA - DataB) <= std::numeric_limits<T>::epsilon() * std::max(std::abs(DataA), std::abs(DataB));
+    }
+    else
+    {
+        return DataA == DataB;
+    }
+}
+
+//template <std::floating_point T>    // T타입은 무조건 부동소수점 계열
+//inline bool TLinkedList<T>::IsEqual(T DataA, T DataB) const
+//{
+//    return std::abs(DataA - DataB) <= std::numeric_limits<T>::epsilon() * std::max(std::abs(DataA), std::abs(DataB));
+//}
+//
+//template <std::integral T>          // T타입은 무조건 정수 계열
+//inline bool TLinkedList<T>::IsEqual(T DataA, T DataB) const
+//{
+//    return DataA == DataB;
+//}
+

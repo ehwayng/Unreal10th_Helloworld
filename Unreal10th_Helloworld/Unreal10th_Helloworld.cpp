@@ -15,8 +15,9 @@
 //#include "Weekend0606.h"
 //#include "C++PersonalProject_0615.h"
 //#include "Day0609.h"
-#include "Day0610.h"
+//#include "Day0610.h"
 #include "T_FixedStack.h"
+#include "Day0611.h"
 
 using namespace std;
 
@@ -40,9 +41,12 @@ int main()
 
 	//Day0609();
 
-	Day0610 day0610;
+	//Day0610 day0610;
 	//day0610.TestMain();
-	day0610.Practice0610();
+	//day0610.Practice0610();
+
+	Day0611 day0611;
+	day0611.Day0611_Main();
 
 }
 

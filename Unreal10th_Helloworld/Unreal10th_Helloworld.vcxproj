@@ -132,12 +132,19 @@
     <ClCompile Include="Day0529.cpp" />
     <ClCompile Include="Day0602.cpp" />
     <ClCompile Include="Day0609.cpp" />
-    <ClCompile Include="Day0610.cpp" />
+    <ClCompile Include="Day0610.cpp">
+      <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">stdcpp20</LanguageStandard>
+    </ClCompile>
+    <ClCompile Include="Day0611.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="FixedStack.cpp" />
-    <ClCompile Include="LinkedList.cpp" />
+    <ClCompile Include="TLinkedList.cpp">
+      <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">stdcpp20</LanguageStandard>
+    </ClCompile>
     <ClCompile Include="T_FixedStack.cpp" />
-    <ClCompile Include="Unreal10th_Helloworld.cpp" />
+    <ClCompile Include="Unreal10th_Helloworld.cpp">
+      <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">stdcpp20</LanguageStandard>
+    </ClCompile>
     <ClCompile Include="Utils.cpp" />
     <ClCompile Include="Weekend0523.cpp" />
     <ClCompile Include="Weekend0530.cpp" />
@@ -159,9 +166,10 @@
     <ClInclude Include="Day0602.h" />
     <ClInclude Include="Day0609.h" />
     <ClInclude Include="Day0610.h" />
+    <ClInclude Include="Day0611.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="FixedStack.h" />
-    <ClInclude Include="LinkedList.h" />
+    <ClInclude Include="TLinkedList.h" />
     <ClInclude Include="T_FixedStack.h" />
     <ClInclude Include="Utils.h" />
     <ClInclude Include="Weekend0523.h" />

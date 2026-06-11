@@ -8,7 +8,7 @@
 #include "BitFlag.h"
 #include "BinarySearchTree.h"
 #include "T_FixedStack.h"
-#include "LinkedList.h"
+#include "TLinkedList.h"
 
 
 	/* 템플릿 클래스 */
